@@ -1,0 +1,10 @@
+services:
+    auth.provider.medusa:
+        class: TRMN\medusaauth\auth\provider\medusa
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@passwords.manager'
+            - '@user'
+        tags:
+            - { name: auth.provider }
