@@ -6,5 +6,6 @@ services:
             - '@config'
             - '@passwords.manager'
             - '@user'
+            - '@language.loader'
         tags:
             - { name: auth.provider }
