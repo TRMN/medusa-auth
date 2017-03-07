@@ -66,6 +66,7 @@ class medusa extends \phpbb\auth\provider\base
             );
         }
 
+        $username = strtolower($username);
         $ch = curl_init('https://medusa.trmn.org/oauth/token');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -189,6 +190,8 @@ class medusa extends \phpbb\auth\provider\base
 
     private function _lookUpRank($rank, $branch)
     {
+        $rank = str_replace([' of the Red', ' of the Green'], '', $rank);
+
         $sql = 'SELECT rank_id FROM ' . RANKS_TABLE . " WHERE rank_title = '";
 
         // Check for more specific 'Rank - Branch' first
