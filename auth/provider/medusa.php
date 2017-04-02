@@ -97,7 +97,7 @@ class medusa extends \phpbb\auth\provider\base
 
                 $forum_rank = $this->_lookUpRank($medusa_user->rank->grade, $medusa_user->branch);
 
-                if (!is_null($forum_rank)) {
+                if (!is_null($forum_rank) && $row['user_rank'] != $forum_rank) {
                     $row['user_rank'] = $forum_rank;
                 }
 
